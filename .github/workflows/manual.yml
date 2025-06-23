@@ -25,11 +25,12 @@ jobs:
           ls -l /home/runner/work/Github-Examples/Github-Examples
       - name: Decode File Content
         run: |
-          echo "${{ github.event.inputs.data }}"
+          echo "${{ github.event.inputs.data }}" 
       - name: Display Greeting
         run: |
           echo "${{ inputs.greeting }}, ${{ inputs.name }}!"
       - name: Display File Content
         run: |
           echo "Contents of the file:"
-          cat ./decoded_file.txt
+          cat "${{ github.event.inputs.data }}"
+          # cat ./decoded_file.txt
