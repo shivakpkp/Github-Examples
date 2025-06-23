@@ -20,6 +20,9 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
+      - name: current location
+        run: |
+          pwd
       - name: Decode File Content
         run: |
           echo "${{ inputs.data }}" | base64 --decode > ./decoded_file.txt
