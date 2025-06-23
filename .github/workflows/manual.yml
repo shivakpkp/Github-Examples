@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: current location
         run: |
-          ls -l /home/runner
+          ls -l /home/runner/work
       - name: Decode File Content
         run: |
           echo "${{ inputs.data }}" | base64 --decode > ./decoded_file.txt
