@@ -3,7 +3,7 @@ on: [push]
 jobs:
   HelloWorld:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.actor == 'shiva'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Print message
         run: echo "Hello, World! This is a conditional workflow."
