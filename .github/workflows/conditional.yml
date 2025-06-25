@@ -1,0 +1,14 @@
+name: Conditional Workflow Example
+on: [push]
+jobs:
+  HelloWorld:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.actor == 'Mary'
+    steps:
+      - name: Print message
+        run: echo "Hello, World! This is a conditional workflow."
+  goodbyeMoon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Goodbye, Moon! This is another conditional workflow."
