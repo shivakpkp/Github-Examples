@@ -1,0 +1,19 @@
+name: Shiva
+on:
+    push:
+      branches:
+        - main
+        - dev
+    pull_request:
+      branches:
+        - main
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+        - name: echo information
+          run: |
+            echo "Hello, World!"
+            echo "ref: ${{ github.ref }}"
+            echo "event name: ${{ github.event_name }}"
+            echo "event action: ${{ github.event.action }}"
