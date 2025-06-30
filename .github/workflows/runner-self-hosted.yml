@@ -9,7 +9,7 @@ on:
 
 jobs:
   example-job:
-    runs-on: self-hosted
+    runs-on: self-linux
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
