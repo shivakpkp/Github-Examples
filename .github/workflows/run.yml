@@ -1,0 +1,45 @@
+name: workflow
+
+on: ['push', 'pull_request']
+
+jobs:
+    set-env:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set up environment variables
+              run: |
+                echo "ACTION_ENV=Production" >> $GITHUB_ENV
+    addTo-Systempath:
+        runs-on: ubuntu-latest
+        needs: set-env
+        steps:
+            - name: Add to system path
+              run: |
+                echo "PATH=$PATH:/usr/local/binsss" >> $GITHUB_PATH
+    print-env:
+        runs-on: ubuntu-latest
+        needs: addTo-Systempath
+        steps:
+            - name: Print environment variables
+              run: |
+                echo "GITHUB_EVENT_PATH is $GITHUB_EVENT_PATH"
+    set-output:
+        runs-on: ubuntu-latest
+        needs: print-env
+        steps:
+            - name: Set output variable
+              run: |
+                echo "output_var=Hello, World!" >> $GITHUB_OUTPUT
+    print-output:
+        runs-on: ubuntu-latest
+        needs: set-output
+        steps:
+            - name: Print output variable
+              run: |
+                echo "Output variable is ${{ steps.set-output.outputs.output_var }}"
+    create-debugmsg:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Create debug message
+              run: |
+                echo "::debug:: This is a debug message for the workflow."
