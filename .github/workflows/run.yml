@@ -32,7 +32,7 @@ jobs:
                 echo "output_var=Hello, World!" >> $GITHUB_OUTPUT
             - name: Print output variable
               run: |
-                echo "Output variable is ${{ GITHUB_OUTPUT }}"
+                echo "Output variable is $GITHUB_OUTPUT"
   
     create-debugmsg:
         runs-on: ubuntu-latest
