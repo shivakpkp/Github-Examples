@@ -28,11 +28,12 @@ jobs:
         needs: print-env
         steps:
             - name: Set output variable
+              id: set_output
               run: |
                 echo "output_var=Hello, World!" >> $GITHUB_OUTPUT
             - name: Print output variable
               run: |
-                echo "Output variable is $GITHUB_OUTPUT"
+                echo "Output variable is ${{ steps.set_output.outputs.output_var }}"
   
     create-debugmsg:
         runs-on: ubuntu-latest
