@@ -13,7 +13,7 @@ jobs:
             
             - name: ${PROJECT_NAME} Build Step
               run: |
-                cho "🔧 Building $PROJECT_NAME in $PROJECT_ENV mode"
+                echo "🔧 Building $PROJECT_NAME in $PROJECT_ENV mode"
                 echo "ℹ️ Workflow Triggered by $GITHUB_ACTOR"
                 echo "📅 Date: $(date)"
             - name: Step with Local Variables
