@@ -1,0 +1,27 @@
+name: Matrix Workflow Example
+
+on:
+  workflow_dispatch:
+
+    
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+                node-version: [14, 16, 18]
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js ${{matrix.node-version}}
+              uses: actions/setup-node@v2
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: Install Dependencies
+              run: npm install
+              
+            - name: Run tests
+              run: |
+                echo "Running tests on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}"
