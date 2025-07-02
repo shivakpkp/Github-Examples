@@ -1,0 +1,11 @@
+name: cron job
+on:
+    schedule:
+        - cron: '06 16 * * *'  # Runs every day at midnight
+    workflow_dispatch:
+jobs:
+    run-cron-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: run a script
+              run: echo "Running cron job script"
