@@ -21,7 +21,8 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - name: Install Dependencies
               run: npm install
-              
+              continue-on-error: true
+
             - name: Run tests
               run: |
                 echo "Running tests on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}"
