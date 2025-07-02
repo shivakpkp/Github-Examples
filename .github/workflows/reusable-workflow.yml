@@ -1,0 +1,37 @@
+name: Reusable Build and Test Workflow
+on:
+  workflow_call:
+    inputs: 
+        Environment:
+          description: 'The environment to run the workflow in'
+          required: true
+          type: string
+        NodeVersion:
+          description: 'The Node.js version to use'
+          required: false
+          default: '16'
+          type: string
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                node-version: ${{ inputs.NodeVersion }}
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
+            - name: Build project
+              run: npm run build
+
+            - name: Deploy to environment
+              run: echo "Deploying to ${{ inputs.Environment }}"

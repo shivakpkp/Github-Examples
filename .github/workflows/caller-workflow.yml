@@ -1,0 +1,9 @@
+name: caller-workflow
+on: [workflow_dispatch]
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      Environment: 'production'
+      NodeVersion: '18'
+    # You can add more secrets as needed
