@@ -21,8 +21,12 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - name: Install Dependencies
               run: npm install
+              id: install-dependencies
               continue-on-error: true
 
+            - name: show msg 
+              if: steps.install-dependencies.outcome == 'failure'
+              run: echo "  Dependencies installation failed, but continuing with the workflow."
             - name: Run tests
               run: |
                 echo "Running tests on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}"
