@@ -4,6 +4,6 @@ jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      Environment: 'production'
+      Environment: 'Development'
       NodeVersion: '18'
     # You can add more secrets as needed
